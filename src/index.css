@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,900;1,400;1,900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-serif: "Playfair Display", ui-serif, Georgia, serif;
+
+  --color-dash-bg: #080808;
+  --color-dash-card: rgba(255, 255, 255, 0.02);
+  --color-dash-border: rgba(255, 255, 255, 0.1);
+  --color-dash-text: #FFFFFF;
+  --color-dash-muted: rgba(255, 255, 255, 0.4);
+  --color-dash-accent: #00FF94;
+  --color-dash-danger: #FF4444;
+}
+
+body {
+  background-color: var(--color-dash-bg);
+  color: var(--color-dash-text);
+  font-family: var(--font-sans);
+  margin: 0;
+  padding: 0;
+}
+
+.layout-grid {
+  display: grid;
+  grid-template-columns: 80px 1fr 340px;
+  height: 100vh;
+  border-top: 1px solid var(--color-dash-border);
+}
+
+@media (max-width: 1024px) {
+  .layout-grid {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+  }
+}
+
+.serif-italic {
+  font-family: var(--font-serif);
+  color: var(--color-dash-accent);
+  font-style: italic;
+  font-weight: 900;
+  font-size: 1.2rem;
+  display: block;
+}
+
+.huge-text {
+  font-size: clamp(60px, 12vw, 140px);
+  line-height: 0.8;
+  font-weight: 800;
+  letter-spacing: -6px;
+}
+
+.metric-card {
+  border-top: 1px solid var(--color-dash-muted);
+  padding-top: 12px;
+  margin-top: 24px;
+}
+
+.nav-icon {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--color-dash-muted);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.nav-icon:hover {
+  border-color: var(--color-dash-accent);
+  color: var(--color-dash-accent);
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  background: var(--color-dash-accent);
+}
+
+.log-entry {
+  font-size: 11px;
+  font-family: var(--font-mono);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  padding: 12px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.tag {
+  font-size: 9px;
+  padding: 2px 6px;
+  border: 1px solid var(--color-dash-muted);
+  border-radius: 4px;
+  text-transform: uppercase;
+  color: var(--color-dash-muted);
+}
+
+.model-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  opacity: 0.8;
+}
