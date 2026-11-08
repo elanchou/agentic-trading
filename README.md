@@ -1,20 +1,51 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Agentic Trading
 
-# Run and deploy your AI Studio app
+Agentic trading dashboard: an agent console, trade list, performance chart and settings, backed by an Express API.
 
-This contains everything you need to run your app locally.
+## Features
 
-View your app in AI Studio: https://ai.studio/apps/7ac5778a-8ca8-4458-9151-6e2a2767d10e
+- Start and stop the trading agent, edit its configuration
+- Trades, performance and log views
+- Design notes for the execution control plane in `docs/plans/`
 
-## Run Locally
+## Tech stack
 
-**Prerequisites:**  Node.js
+React 19, Vite, Express 4, Recharts, Tailwind CSS 4, TypeScript, `@google/genai`
 
+## Getting started
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+**Prerequisites:** Node.js 20 or newer.
+
+```bash
+npm install
+cp .env.example .env.local   # set GEMINI_API_KEY
+npm run dev                  # http://localhost:3000
+```
+
+## Configuration
+
+| Variable | Purpose |
+| --- | --- |
+| `GEMINI_API_KEY` | Gemini API key used for AI features |
+| `APP_URL` | Public URL of the deployed app (set automatically in AI Studio) |
+
+## Project structure
+
+```text
+src/
+  components/   AgentConsole, DashboardLayout, PerformanceChart, SettingsView, TradeList
+  server/       execution types
+server.ts       Express API + Vite middleware
+tests/
+docs/plans/
+```
+
+## API
+
+| Method | Path | Purpose |
+| --- | --- | --- |
+| GET | `/api/agent/status` | Agent status |
+| GET/POST | `/api/agent/config` | Read or update agent config |
+| POST | `/api/agent/toggle` | Start or stop the agent |
+| POST | `/api/node/setup` | Node setup |
+| GET | `/api/trades`, `/api/performance`, `/api/logs` | Data views |
